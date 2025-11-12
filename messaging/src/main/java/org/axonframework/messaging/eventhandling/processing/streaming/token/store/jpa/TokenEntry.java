@@ -24,12 +24,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
 import org.axonframework.common.ClassUtils;
 import org.axonframework.common.DateTimeUtils;
+import org.axonframework.conversion.Converter;
 import org.axonframework.messaging.eventhandling.processing.streaming.StreamingEventProcessor;
 import org.axonframework.messaging.eventhandling.processing.streaming.segmenting.Segment;
 import org.axonframework.messaging.eventhandling.processing.streaming.token.TrackingToken;
-import org.axonframework.conversion.Converter;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -47,6 +48,7 @@ import static org.axonframework.common.DateTimeUtils.formatInstant;
  * @since 3.0.0
  */
 @Entity
+@Table(schema = "axon")
 @IdClass(TokenEntry.PK.class)
 public class TokenEntry {
 

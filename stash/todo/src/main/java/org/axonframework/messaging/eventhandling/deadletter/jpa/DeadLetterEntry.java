@@ -16,13 +16,20 @@
 
 package org.axonframework.messaging.eventhandling.deadletter.jpa;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
 import org.axonframework.common.IdentifierFactory;
-import org.axonframework.messaging.core.Metadata;
-import org.axonframework.messaging.deadletter.Cause;
 import org.axonframework.conversion.SerializedObject;
 import org.axonframework.conversion.Serializer;
 import org.axonframework.conversion.SimpleSerializedObject;
+import org.axonframework.messaging.core.Metadata;
+import org.axonframework.messaging.deadletter.Cause;
 
 import java.time.Instant;
 import java.util.Arrays;
@@ -43,7 +50,7 @@ import java.util.Objects;
         @Index(columnList = "processingGroup"),
         @Index(columnList = "processingGroup,sequenceIdentifier"),
         @Index(columnList = "processingGroup,sequenceIdentifier,sequenceIndex", unique = true),
-})
+}, schema = "axon")
 public class DeadLetterEntry {
 
     @Id

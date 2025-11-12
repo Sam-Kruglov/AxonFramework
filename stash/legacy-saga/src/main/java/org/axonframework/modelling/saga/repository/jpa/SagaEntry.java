@@ -21,6 +21,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
 import org.axonframework.conversion.SerializedObject;
 import org.axonframework.conversion.Serializer;
 
@@ -31,6 +32,7 @@ import org.axonframework.conversion.Serializer;
  * @since 0.7
  */
 @Entity
+@Table(schema = "axon")
 public class SagaEntry<T> {
 
     @SuppressWarnings({"FieldCanBeLocal", "UnusedDeclaration"})

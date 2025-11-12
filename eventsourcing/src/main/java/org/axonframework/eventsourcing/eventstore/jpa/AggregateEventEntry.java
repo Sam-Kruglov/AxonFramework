@@ -29,8 +29,8 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import org.axonframework.common.DateTimeUtils;
-import org.axonframework.messaging.eventhandling.EventMessage;
 import org.axonframework.messaging.core.MessageType;
+import org.axonframework.messaging.eventhandling.EventMessage;
 
 import java.time.Instant;
 import java.time.temporal.TemporalAccessor;
@@ -45,7 +45,7 @@ import static org.axonframework.common.DateTimeUtils.formatInstant;
  * @since 5.0.0
  */
 @Entity
-@Table(indexes = @Index(columnList = "aggregateIdentifier,aggregateSequenceNumber", unique = true))
+@Table(indexes = @Index(columnList = "aggregateIdentifier,aggregateSequenceNumber", unique = true), schema = "axon")
 public class AggregateEventEntry {
 
     // Deliberate field ordering for column ordering

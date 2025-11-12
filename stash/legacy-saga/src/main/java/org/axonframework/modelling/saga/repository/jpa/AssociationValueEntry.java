@@ -33,7 +33,7 @@ import org.axonframework.modelling.saga.AssociationValue;
 @Table(indexes = {
         @Index(columnList = "sagaType, associationKey, associationValue", unique = false),
         @Index(columnList = "sagaId, sagaType", unique = false)
-})
+}, schema = "axon")
 @Entity
 public class AssociationValueEntry {
 

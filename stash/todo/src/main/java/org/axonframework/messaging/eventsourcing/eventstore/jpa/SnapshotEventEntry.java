@@ -17,9 +17,10 @@
 package org.axonframework.messaging.eventsourcing.eventstore.jpa;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import org.axonframework.conversion.Serializer;
 import org.axonframework.messaging.eventhandling.DomainEventMessage;
 import org.axonframework.messaging.eventsourcing.eventstore.AbstractSnapshotEventEntry;
-import org.axonframework.conversion.Serializer;
 
 /**
  * Default implementation of an event entry containing a serialized snapshot of an aggregate. This implementation is
@@ -29,6 +30,7 @@ import org.axonframework.conversion.Serializer;
  * @author Rene de Waele
  */
 @Entity
+@Table(schema = "axon")
 public class SnapshotEventEntry extends AbstractSnapshotEventEntry<byte[]> {
 
     /**
