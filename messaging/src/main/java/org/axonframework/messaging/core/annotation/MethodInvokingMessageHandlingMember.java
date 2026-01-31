@@ -176,14 +176,14 @@ public class MethodInvokingMessageHandlingMember<T> implements MessageHandlingMe
 
         CompletableFuture<MessageStream<?>> invocationFuture = parametersFuture.handle((params, throwable) -> {
             if (throwable != null) {
-                logger.warn("Method [{}] failed handling message with identifier [{}].", method, message.identifier());
+                logger.error("Method [{}] failed handling message with identifier [{}].", method, message.identifier(), throwable);
                 return MessageStream.failed(throwable);
             }
             try {
                 Object result = method.invoke(target, params);
                 return returnTypeConverter.apply(result);
             } catch (IllegalAccessException | InvocationTargetException e) {
-                logger.warn("Method [{}] failed handling message with identifier [{}].", method, message.identifier());
+                logger.error("Method [{}] failed handling message with identifier [{}].", method, message.identifier(), e);
                 if (e.getCause() instanceof Exception) {
                     return MessageStream.failed(e.getCause());
                 } else if (e.getCause() instanceof Error) {
